@@ -7,6 +7,10 @@ Rank::Rank() {
 Rank::~Rank() {
 }
 
+void Rank::giveRank(RankEntry rankEntry) {
+	this->rankLog.push_back(rankEntry);
+}
+
 void Rank::giveRank(RankEnum rank, std::string examiner) {
 	struct tm currentDate;
 	time_t now = time(0);
@@ -19,10 +23,10 @@ void Rank::giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner) {
 	this->rankLog.push_back({ rank, date, examiner });
 }
 
-void Rank::setRankLog(std::vector<entryRank> rankLog) {
+void Rank::setRankLog(std::vector<RankEntry> rankLog) {
 	this->rankLog = rankLog;
 }
 
-std::vector<entryRank> Rank::getRankLog() {
+std::vector<RankEntry> Rank::getRankLog() {
 	return this->rankLog;
 }
