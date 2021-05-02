@@ -10,7 +10,7 @@ User::User() {
 	User::count++;
 	UUID = User::count + 1;
 	this->name = "Unnamed";
-	this->registrationDate = { currentDate.tm_year, currentDate.tm_mon + 1, currentDate.tm_mday };
+	this->registrationDate = { currentDate.tm_mday, currentDate.tm_mon + 1, currentDate.tm_year + 1900 };
 	this->dob = { 1,1,1 };
 }
 

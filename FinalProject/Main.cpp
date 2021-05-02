@@ -3,24 +3,36 @@
 #include "TJ.h" // TJ namespace
 
 //#include "MainMenu.h"
-#include "Activity.h"
+#include "Rank.h"
+#include <string>
 
 int main() {
 	//MainMenu menu;
 	//menu.run();
 
-	Activity activity;
-	std::cout << activity.getDate().day << " | " << activity.getDate().month << " | " << activity.getDate().year << " | " << activity.getDescription() << " | " << activity.getLocation() << " | " << activity.getOrganizer() << std::endl;
-	
-	Activity activity2("Some description", "Not nowhere", { 02,04,2001 }, "Someone");
-	std::cout << activity2.getDate().day << " | " << activity2.getDate().month << " | " << activity2.getDate().year << " | " << activity2.getDescription() << " | " << activity2.getLocation() << " | " << activity2.getOrganizer() << std::endl;
-	
-	Activity activity3;
-	activity3.setDescription("Some other description");
-	activity3.setLocation("Anywhere");
-	activity3.setDate({ 20, 9, 1921 });
-	activity3.setOrganizer("A person");
-	std::cout << activity3.getDate().day << " | " << activity3.getDate().month << " | " << activity3.getDate().year << " | " << activity3.getDescription() << " | " << activity3.getLocation() << " | " << activity3.getOrganizer();
+	Rank rank;
+	for (int i = 0; i < 10; i++) {
+		std::string instr = "MyInstructor";
+		instr += std::to_string(i);
+		rank.giveRank((RankEnum)i, instr);
+	}
+
+	for(entryRank rankI : rank.getRankLog()) {
+		std::cout << (int)rankI.rank << "\t" << rankI.examiner << "\t" << rankI.date.day << "\t" << rankI.date.month << "\t" << rankI.date.year << std::endl;
+	}
+
+	std::cout << std::endl << std::endl;
+
+	Rank rank2;
+	for (int i = 0; i < 10; i++) {
+		std::string instr = "MyInstructor";
+		instr += std::to_string(i);
+		rank2.giveRank((RankEnum)i, {((int)(1.3*(1+i))), i+5, 10*i+1950}, instr);
+	}
+
+	for (entryRank rankI2 : rank2.getRankLog()) {
+		std::cout << (int)rankI2.rank << "\t" << rankI2.examiner << "\t" << rankI2.date.day << "\t" << rankI2.date.month << "\t" << rankI2.date.year << std::endl;
+	}
 
 	return 0;
 }
