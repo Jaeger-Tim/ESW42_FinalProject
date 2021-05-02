@@ -21,7 +21,17 @@ void Menu::display() {
 		std::cout << "[" << option.first << "] " << option.second->getDescription();
 	}	
 
+	std::string choice;
 
+	std::cin >> choice;
+	while (std::cin.fail()) {
+		std::cin.clear(); // Reset the Cin flags
+		std::cin.ignore(100, '\n'); // Clear the buffer
+		std::cout << "Invalid input." << std::endl;
+		std::cin >> choice;
+	}
+
+	this->options[choice]->run();
 }
 
 Menu::AbstractItem::AbstractItem() {
