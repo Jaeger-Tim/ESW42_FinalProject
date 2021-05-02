@@ -13,8 +13,6 @@
 #include "TJ.h"
 
 #include <ctime>
-/*#include <time.h>
-#include <stdio.h>*/
 #include <vector>
 #include "Activity.h"
 
@@ -35,7 +33,7 @@ private:
 
 	TJ::simpleDate dob; // Date of birth
 
-	//Rank rank;
+	Rank rank;
 
 	std::vector<Activity> activities;
 public:

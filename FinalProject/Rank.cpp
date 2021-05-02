@@ -19,10 +19,10 @@ void Rank::giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner) {
 	this->rankLog.push_back({ rank, date, examiner });
 }
 
-void Rank::setRankLog(std::vector<entryRank> rankLog) {
+void Rank::setRankLog(std::vector<RankEntry> rankLog) {
 	this->rankLog = rankLog;
 }
 
-std::vector<entryRank> Rank::getRankLog() {
+std::vector<RankEntry> Rank::getRankLog() {
 	return this->rankLog;
 }

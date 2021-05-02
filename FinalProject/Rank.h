@@ -27,7 +27,7 @@ enum class RankEnum {
 	kyudan, judan
 };
 
-struct entryRank {
+struct RankEntry {
 	RankEnum rank;
 	TJ::simpleDate date;
 	std::string examiner;
@@ -35,7 +35,7 @@ struct entryRank {
 
 class Rank {
 private:
-	std::vector<entryRank> rankLog;
+	std::vector<RankEntry> rankLog;
 public:
 	Rank();
 	~Rank();
@@ -43,6 +43,6 @@ public:
 	void giveRank(RankEnum rank, std::string examiner);
 	void giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner);
 	
-	void setRankLog(std::vector<entryRank> rankLog);
-	std::vector<entryRank> getRankLog();
+	void setRankLog(std::vector<RankEntry> rankLog);
+	std::vector<RankEntry> getRankLog();
 };

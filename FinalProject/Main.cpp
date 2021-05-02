@@ -17,7 +17,7 @@ int main() {
 		rank.giveRank((RankEnum)i, instr);
 	}
 
-	for(entryRank rankI : rank.getRankLog()) {
+	for(RankEntry rankI : rank.getRankLog()) {
 		std::cout << (int)rankI.rank << "\t" << rankI.examiner << "\t" << rankI.date.day << "\t" << rankI.date.month << "\t" << rankI.date.year << std::endl;
 	}
 
@@ -30,7 +30,7 @@ int main() {
 		rank2.giveRank((RankEnum)i, {((int)(1.3*(1+i))), i+5, 10*i+1950}, instr);
 	}
 
-	for (entryRank rankI2 : rank2.getRankLog()) {
+	for (RankEntry rankI2 : rank2.getRankLog()) {
 		std::cout << (int)rankI2.rank << "\t" << rankI2.examiner << "\t" << rankI2.date.day << "\t" << rankI2.date.month << "\t" << rankI2.date.year << std::endl;
 	}
 
