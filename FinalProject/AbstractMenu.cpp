@@ -20,6 +20,8 @@ void Menu::display() {
 	for (auto& option : this->options) {
 		std::cout << "[" << option.first << "] " << option.second->getDescription();
 	}	
+
+
 }
 
 Menu::AbstractItem::AbstractItem() {
