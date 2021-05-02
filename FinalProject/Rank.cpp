@@ -7,6 +7,10 @@ Rank::Rank() {
 Rank::~Rank() {
 }
 
+void Rank::giveRank(RankEntry rankEntry) {
+	this->rankLog.push_back(rankEntry);
+}
+
 void Rank::giveRank(RankEnum rank, std::string examiner) {
 	struct tm currentDate;
 	time_t now = time(0);

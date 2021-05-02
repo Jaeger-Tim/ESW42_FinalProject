@@ -3,24 +3,97 @@
 long User::count = 0;
 
 User::User() {
-	struct tm currentDate;
-	time_t now = time(0);
-	localtime_s(&currentDate, &now);
-
 	User::count++;
-	UUID = User::count + 1;
+	UUID = User::count;
+	this->clubID = 0;
 	this->name = "Unnamed";
-	this->registrationDate = { currentDate.tm_mday, currentDate.tm_mon + 1, currentDate.tm_year + 1900 };
 	this->dob = { 1,1,1 };
 }
 
-User::User(std::string name, TJ::simpleDate registrationDate, TJ::simpleDate dob) {
+User::User(std::string name, long clubID, TJ::simpleDate dob) {
 	User::count++;
-	this->UUID = User::count + 1;
+	this->UUID = User::count;
 	this->name = name;
-	this->registrationDate = registrationDate;
+	this->clubID = clubID;
 	this->dob = dob;
+	this->rank = Rank();
+	this->activities = {};
+}
+
+User::User(std::string name, long clubID, TJ::simpleDate dob, Rank rank, std::vector<Activity> activities) {
+	User::count++;
+	this->UUID = User::count;
+	this->name = name;
+	this->clubID = clubID;
+	this->dob = dob;
+	this->rank = rank;
+	this->activities = activities;
 }
 
 User::~User() {
+}
+
+void User::setUUID(long UUID) {
+	this->UUID = UUID;
+}
+
+long User::getUUID() {
+	return this->UUID;
+}
+
+void User::setName(std::string name) {
+	this->name = name;
+}
+
+std::string User::getName() {
+	return this->name;
+}
+
+void User::setClubID(long clubID) {
+	this->clubID = clubID;
+}
+
+long User::getClubID() {
+	return this->clubID;
+}
+
+void User::setDob(TJ::simpleDate dob) {
+	this->dob = dob;
+}
+
+TJ::simpleDate User::getDob() {
+	return this->dob;
+}
+
+void User::setRank(Rank rank) {
+	this->rank = rank;
+}
+
+void User::giveRank(RankEntry rankEntry) {
+	this->rank.giveRank(rankEntry);
+}
+
+void User::giveRank(RankEnum rank, std::string examiner) {
+	this->rank.giveRank(rank, examiner);
+}
+
+void User::giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner) {
+
+	this->rank.giveRank(rank, date, examiner);
+}
+
+Rank User::getRank() {
+	return this->rank;
+}
+
+void User::setActivities(std::vector<Activity> activities) {
+	this->activities = activities;
+}
+
+void User::addActivity(Activity activity) {
+	this->activities.push_back(activity);
+}
+
+std::vector<Activity> User::getActivities() {
+	return activities;
 }

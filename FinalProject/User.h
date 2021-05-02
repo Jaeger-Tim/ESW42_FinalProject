@@ -7,6 +7,7 @@
 *	- ctime
 *	- Vector
 *	- Activity
+*	- Rank
 */
 
 #include <iostream>
@@ -15,6 +16,7 @@
 #include <ctime>
 #include <vector>
 #include "Activity.h"
+#include "Rank.h"
 
 class User {
 private:
@@ -24,12 +26,6 @@ private:
 	std::string name;
 
 	long clubID;
-	std::string clubName;
-
-	long bondCode;
-	TJ::simpleDate registrationDate;
-
-	long insuranceCode;
 
 	TJ::simpleDate dob; // Date of birth
 
@@ -38,7 +34,30 @@ private:
 	std::vector<Activity> activities;
 public:
 	User();
-	User(std::string name, TJ::simpleDate registrationDate, TJ::simpleDate dob);
+	User(std::string name, long clubID, TJ::simpleDate dob);
+	User(std::string name, long clubID, TJ::simpleDate dob, Rank rank, std::vector<Activity> activities);
 
 	~User();
+
+	void setUUID(long UUID);
+	long getUUID();
+
+	void setName(std::string name);
+	std::string getName();
+
+	void setClubID(long clugID);
+	long getClubID();
+
+	void setDob(TJ::simpleDate dob);
+	TJ::simpleDate getDob();
+
+	void setRank(Rank rank);
+	void giveRank(RankEntry rankEntry);
+	void giveRank(RankEnum rank, std::string examiner);
+	void giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner);
+	Rank getRank();
+
+	void setActivities(std::vector<Activity> activities);
+	void addActivity(Activity activity);
+	std::vector<Activity> getActivities();
 };
