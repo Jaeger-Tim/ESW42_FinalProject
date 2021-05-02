@@ -7,16 +7,19 @@ Menu::~Menu() {
 }
 
 void Menu::addChoice(std::string name, std::string description, void(*func)()) {
-	FunctionItem item;
-	item.setDescription(description);
-	item.setContent(func);
-	this->options.push_back(item);
+	FunctionItem* item = new FunctionItem();
+	item->setDescription(description);
+	item->setContent(func);
+	//this->options.push_back(item);
+	//this->options.emplace_back(item);
+	this->options.emplace(name, item);
+
 }
 
 void Menu::display() {
-	/*for (auto& option : this->options) {
-		std::cout << "[" << option.first << "] " << option.second.getDescription();
-	}*/
+	for (auto& option : this->options) {
+		std::cout << "[" << option.first << "] " << option.second->getDescription();
+	}	
 }
 
 Menu::AbstractItem::AbstractItem() {

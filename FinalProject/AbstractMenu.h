@@ -1,5 +1,18 @@
 #pragma once
 
+/*
+* __________
+* \        /
+*  \      /
+*   \    /
+*    \  /		Add a delete for the item vertor, items are created with the "new" method
+*     \/
+*	+----+
+*   |    |
+*   +----+
+*/
+
+
 #include <iostream>
 #include <map>
 #include <vector>
@@ -30,7 +43,7 @@ public:
 	private:
 		void (*storedFunction) ();
 	public:
-		FunctionItem() : AbstractItem() {}
+		//FunctionItem() : AbstractItem() {}
 
 		ItemType content() override { return ItemType::fuction; }
 
@@ -41,7 +54,8 @@ public:
 
 private:
 	std::string title;
-	std::vector<Menu::AbstractItem> options;
+	//std::vector<std::unique_ptr<Menu::AbstractItem>> options;
+	std::map<std::string, std::unique_ptr<Menu::AbstractItem>> options;
 
 	//std::vector<AbstractItem> Choices;
 public:
