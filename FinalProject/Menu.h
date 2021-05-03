@@ -1,17 +1,5 @@
 #pragma once
 
-/*
-* __________
-* \        /
-*  \      /
-*   \    /
-*    \  /		Add a delete for the item vertor and menu pointer, items are created with the "new" method
-*     \/
-*	+----+
-*   |    |
-*   +----+
-*/
-
 #include <iostream>
 #include "TJ.h"
 
