@@ -97,3 +97,40 @@ void User::addActivity(Activity activity) {
 std::vector<Activity> User::getActivities() {
 	return activities;
 }
+
+User TJ::createUser() {
+	User user;
+	std::string tmp;
+	TJ::breakSection('=');
+	std::cout << "Name: ";
+
+	std::cin >> tmp;
+
+	while (std::cin.fail()) {
+		std::cin.clear(); // Reset the Cin flags
+		std::cin.ignore(100, '\n'); // Clear the buffer
+		std::cout << "Invalid input!" << std::endl;
+		std::cin >> tmp;
+	}
+
+	user.setName(tmp);
+	return user;
+}
+
+void TJ::listUsers(std::vector<User> users) {
+	TJ::clearScreen();
+
+	std::cout << std::setw(26) << "Name" << std::setw(19) << "Current rank" << std::setw(5) << "UUID" << std::endl;
+
+	TJ::breakSection();
+
+	for (User user : users) {
+		std::cout << std::setw(26) << user.getName() << std::setw(19) << ((user.getRank().getRankLog().size() > 0) ? (Rank::toString(user.getRank().getRankLog().back().rank)) : "") << std::setw(5) << user.getUUID() << std::endl;
+	}
+
+	TJ::breakSection('=');
+
+	std::cout << "Press enter to continue...";
+	std::cin.ignore(100, '\n');
+	std::getchar();
+}

@@ -23,6 +23,45 @@ void Rank::giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner) {
 	this->rankLog.push_back({ rank, date, examiner });
 }
 
+std::string Rank::toString(RankEnum rank) {
+	switch (rank) {
+		case RankEnum::candidateB: return "candidate B"; break;
+		case RankEnum::candidateA: return "candidate A"; break;
+		case RankEnum::kyu9: return "9th kyu"; break;
+		case RankEnum::candidateKyu8: return "candidate 8th kyu"; break;
+		case RankEnum::kyu8: return "8th kyu"; break;
+		case RankEnum::advancedKyu8: return "advanced 8th kyu"; break;
+		case RankEnum::candidateKyu7: return "candidate 7th kyu"; break;
+		case RankEnum::kyu7: return "7th kyu"; break;
+		case RankEnum::advancedKyu7: return "advanced 7th kyu"; break;
+		case RankEnum::candidateKyu6: return "candidate 6th kyu"; break;
+		case RankEnum::kyu6: return "6th kyu"; break;
+		case RankEnum::advancedKyu6: return "advanced 6th kyu"; break;
+		case RankEnum::candidateKyu5: return "candidate 5th kyu"; break;
+		case RankEnum::kyu5: return "5th kyu"; break;
+		case RankEnum::advancedKyu5: return "advanced 5th kyu"; break;
+		case RankEnum::candidateKyu4: return "candidate 4th kyu"; break;
+		case RankEnum::kyu4: return "4th kyu"; break;
+		case RankEnum::candidateKyu3: return "candidate 3rd kyu"; break;
+		case RankEnum::kyu3: return "3rd kyu"; break;
+		case RankEnum::candidateKyu2: return "candidate 2nd kyu"; break;
+		case RankEnum::kyu2: return "2nd kyu"; break;
+		case RankEnum::candidateKyu1: return "candidate 1st kyu"; break;
+		case RankEnum::kyu1: return "1st kyu"; break;
+		case RankEnum::shodan: return "shodan"; break;
+		case RankEnum::nidan: return "nidan"; break;
+		case RankEnum::sandan: return "sandan"; break;
+		case RankEnum::yondan: return "yondan"; break;
+		case RankEnum::godan: return "godan"; break;
+		case RankEnum::rokudan: return "rokudan"; break;
+		case RankEnum::nanadan: return "nanadan"; break;
+		case RankEnum::hachidan: return "hachidan"; break;
+		case RankEnum::kyudan: return "kyudan"; break;
+		case RankEnum::judan: return "judan"; break;
+		default: return "No existing rank"; break;
+	}
+}
+
 void Rank::setRankLog(std::vector<RankEntry> rankLog) {
 	this->rankLog = rankLog;
 }

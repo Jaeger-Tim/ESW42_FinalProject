@@ -15,6 +15,7 @@
 
 #include <ctime>
 #include <vector>
+#include <iomanip>
 #include "Activity.h"
 #include "Rank.h"
 
@@ -61,3 +62,8 @@ public:
 	void addActivity(Activity activity);
 	std::vector<Activity> getActivities();
 };
+
+namespace TJ {
+	User createUser();
+	void listUsers(std::vector<User> users);
+}

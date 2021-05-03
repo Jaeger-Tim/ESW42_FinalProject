@@ -2,20 +2,36 @@
 
 #include "TJ.h" // TJ namespace
 
-#include"Menu.h"
 #include <string>
+#include <vector>
+#include <functional>
+
+#include"Menu.h"
+#include "User.h"
 
 int main() {
-	Menu submenu;
-	submenu.setTitle("Submenu");
-	submenu.addChoice("Count", "Counting on you", []() { for (int i = 0; i < 10; i++) std::cout << i << std::endl; });
+	std::vector<User> users;
 
+	Menu createUser;
+	Menu manageUsers;
 	Menu mainMenu;
-	mainMenu.setTitle("Main menu");
-	mainMenu.addChoice("A", "Some description", []() {std::cout << "!!! I did it !!!" << "\n"; });
-	mainMenu.addChoice("HALLELUJAH", "This is line 2 and it works :)", []() {std::cout << "And for once I know why it works ;)" << "\n"; });
-	mainMenu.addChoice("Next", "Yes, there are more menus.", &submenu);
-	mainMenu.display();
 
+	mainMenu.setTitle("Main menu");
+	mainMenu.addChoice("M", "Manage users", &manageUsers);
+	mainMenu.addChoice("EXIT", "", []() {});
+
+	manageUsers.setTitle("Manage users");
+	manageUsers.addChoice("L", "List all users", [&]() { TJ::listUsers(users);  });
+	manageUsers.addChoice("C", "Create a user", [&]() { users.push_back(TJ::createUser()); });
+	manageUsers.addChoice("D", "Delete a user", &createUser);
+	manageUsers.addChoice("E", "Edit user", &createUser);
+
+	createUser.setTitle("Create user");
+
+	createUser.addChoice("Cancel", "", &mainMenu);
+
+	while (1) {
+		mainMenu.display();
+	}
 	return 0;
 }

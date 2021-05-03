@@ -45,6 +45,8 @@ public:
 	void giveRank(RankEnum rank, std::string examiner);
 	void giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner);
 	
+	static std::string toString(RankEnum rank);
+
 	void setRankLog(std::vector<RankEntry> rankLog);
 	std::vector<RankEntry> getRankLog();
 };

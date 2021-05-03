@@ -8,7 +8,8 @@ std::string Menu::getTitle() {
 	return this->title;
 }
 
-void Menu::addChoice(std::string name, std::string description, void(*func)()) {
+//void Menu::addChoice(std::string name, std::string description, void(*func)()) {
+void Menu::addChoice(std::string name, std::string description, std::function<void(void)> func) {
 	FunctionItem* item = new FunctionItem();
 	item->setDescription(description);
 	item->setContent(func);
@@ -27,9 +28,9 @@ void Menu::addChoice(std::string name, std::string description, Menu* menu) {
 void Menu::display() {
 	TJ::clearScreen();
 	TJ::breakSection('=');
-	
+
 	std::cout << this->getTitle() << std::endl;
-	
+
 	TJ::breakSection();
 
 	for (auto& option : this->options) {
@@ -43,7 +44,7 @@ void Menu::display() {
 	bool valid = false;
 	while (!valid) {
 		std::cin >> choice;
-		
+
 		while (std::cin.fail()) {
 			std::cin.clear(); // Reset the Cin flags
 			std::cin.ignore(100, '\n'); // Clear the buffer
