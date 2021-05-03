@@ -22,16 +22,9 @@ class Menu {
 public:
 	class AbstractItem {
 	private:
-		std::string name;
 		std::string description;
 	public:
 		enum class ItemType { fuction = 0, menu = 1 };
-
-		AbstractItem();
-		~AbstractItem();
-
-		void setName(std::string name);
-		std::string getName();
 
 		void setDescription(std::string description);
 		std::string getDescription();
@@ -43,9 +36,8 @@ public:
 	class FunctionItem : public AbstractItem {
 	private:
 		void (*storedFunction) ();
-	public:
-		//FunctionItem() : AbstractItem() {}
 
+	public:
 		ItemType content() override { return ItemType::fuction; }
 
 		void run() override { storedFunction(); }
@@ -56,9 +48,8 @@ public:
 	class MenuItem : public AbstractItem {
 	private:
 		Menu* menu;
-	public:
-		//FunctionItem() : AbstractItem() {}
 
+	public:
 		ItemType content() override { return ItemType::menu; }
 
 		void run() override { this->menu->display(); }
@@ -68,14 +59,9 @@ public:
 
 private:
 	std::string title;
-	//std::vector<std::unique_ptr<Menu::AbstractItem>> options;
 	std::map<std::string, std::unique_ptr<Menu::AbstractItem>> options;
 
-	//std::vector<AbstractItem> Choices;
 public:
-	Menu();
-	~Menu();
-
 	void setTitle(std::string title);
 	std::string getTitle();
 	void addChoice(std::string name, std::string description, void (*func)());

@@ -1,11 +1,5 @@
 #include "AbstractMenu.h"
 
-Menu::Menu() {
-}
-
-Menu::~Menu() {
-}
-
 void Menu::setTitle(std::string title) {
 	this->title = title;
 }
@@ -18,8 +12,6 @@ void Menu::addChoice(std::string name, std::string description, void(*func)()) {
 	FunctionItem* item = new FunctionItem();
 	item->setDescription(description);
 	item->setContent(func);
-	//this->options.push_back(item);
-	//this->options.emplace_back(item);
 	this->options.emplace(name, item);
 
 }
@@ -28,8 +20,6 @@ void Menu::addChoice(std::string name, std::string description, Menu* menu) {
 	MenuItem* item = new MenuItem();
 	item->setDescription(description);
 	item->setContent(menu);
-	//this->options.push_back(item);
-	//this->options.emplace_back(item);
 	this->options.emplace(name, item);
 
 }
@@ -37,8 +27,11 @@ void Menu::addChoice(std::string name, std::string description, Menu* menu) {
 void Menu::display() {
 	TJ::clearScreen();
 	TJ::breakSection('=');
+	
 	std::cout << this->getTitle() << std::endl;
+	
 	TJ::breakSection();
+
 	for (auto& option : this->options) {
 		std::cout << "[" << option.first << "] " << option.second->getDescription() << std::endl;
 	}
@@ -67,20 +60,6 @@ void Menu::display() {
 	this->options[choice]->run();
 }
 
-Menu::AbstractItem::AbstractItem() {
-}
-
-Menu::AbstractItem::~AbstractItem() {
-}
-
-void Menu::AbstractItem::setName(std::string name) {
-	this->name = name;
-}
-
-std::string Menu::AbstractItem::getName() {
-	return this->name;
-}
-
 void Menu::AbstractItem::setDescription(std::string description) {
 	this->description = description;
 }
@@ -88,6 +67,3 @@ void Menu::AbstractItem::setDescription(std::string description) {
 std::string Menu::AbstractItem::getDescription() {
 	return description;
 }
-
-//Menu::FunctionItem::FunctionItem() {
-//}
