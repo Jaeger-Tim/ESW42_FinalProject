@@ -48,7 +48,7 @@ public:
 
 		ItemType content() override { return ItemType::fuction; }
 
-		void run() override { storedFunction();	}
+		void run() override { storedFunction(); }
 
 		void setContent(void (*func)()) { storedFunction = func; }
 	};
@@ -63,7 +63,7 @@ public:
 
 		void run() override { this->menu->display(); }
 
-		void setContent(Menu *menu) { this->menu = menu; }
+		void setContent(Menu* menu) { this->menu = menu; }
 	};
 
 private:
@@ -79,5 +79,6 @@ public:
 	void setTitle(std::string title);
 	std::string getTitle();
 	void addChoice(std::string name, std::string description, void (*func)());
+	void addChoice(std::string name, std::string description, Menu* menu);
 	void display();
 };

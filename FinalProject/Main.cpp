@@ -6,12 +6,16 @@
 #include <string>
 
 int main() {
+	Menu submenu;
+	submenu.setTitle("Submenu");
+	submenu.addChoice("Count", "Counting on you", []() { for (int i = 0; i < 10; i++) std::cout << i << std::endl; });
 
-	Menu menu;
-	menu.setTitle("Test menu");
-	menu.addChoice("A", "Some description", []() {std::cout << "!!! I did it !!!" << "\n";});
-	menu.addChoice("HALLELUJAH", "This is line 2 and it works :)", []() {std::cout << "And for once I know why it works ;)" << "\n"; });
-	menu.display();
+	Menu mainMenu;
+	mainMenu.setTitle("Main menu");
+	mainMenu.addChoice("A", "Some description", []() {std::cout << "!!! I did it !!!" << "\n"; });
+	mainMenu.addChoice("HALLELUJAH", "This is line 2 and it works :)", []() {std::cout << "And for once I know why it works ;)" << "\n"; });
+	mainMenu.addChoice("Next", "Yes, there are more menus.", &submenu);
+	mainMenu.display();
 
 	return 0;
 }

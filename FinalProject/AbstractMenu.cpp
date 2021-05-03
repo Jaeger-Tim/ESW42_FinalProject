@@ -24,6 +24,16 @@ void Menu::addChoice(std::string name, std::string description, void(*func)()) {
 
 }
 
+void Menu::addChoice(std::string name, std::string description, Menu* menu) {
+	MenuItem* item = new MenuItem();
+	item->setDescription(description);
+	item->setContent(menu);
+	//this->options.push_back(item);
+	//this->options.emplace_back(item);
+	this->options.emplace(name, item);
+
+}
+
 void Menu::display() {
 	TJ::clearScreen();
 	TJ::breakSection('=');
