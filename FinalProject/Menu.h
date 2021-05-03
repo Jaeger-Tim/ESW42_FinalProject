@@ -3,8 +3,8 @@
 #include <iostream>
 #include "TJ.h"
 
-//#include <map>
-#include <unordered_map>
+#include <map>
+//#include <unordered_map>
 #include <vector>
 
 #include <functional>
@@ -26,7 +26,6 @@ public:
 
 	class FunctionItem : public AbstractItem {
 	private:
-		//void (*storedFunction) ();
 		std::function<void(void)> storedFunction;
 
 	public:
@@ -34,7 +33,6 @@ public:
 
 		void run() override { storedFunction(); }
 
-		//void setContent(void (*func)()) { storedFunction = func; }
 		void setContent(std::function<void(void)> func) { storedFunction = func; }
 	};
 
@@ -52,12 +50,11 @@ public:
 
 private:
 	std::string title;
-	std::unordered_map<std::string, std::unique_ptr<Menu::AbstractItem>> options;
+	std::map<std::string, std::unique_ptr<Menu::AbstractItem>> options;
 
 public:
 	void setTitle(std::string title);
 	std::string getTitle();
-	//void addChoice(std::string name, std::string description, void (*func)()); 
 	void addChoice(std::string name, std::string description, std::function<void(void)> func);
 	void addChoice(std::string name, std::string description, Menu* menu);
 	void display();

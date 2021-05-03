@@ -16,6 +16,7 @@
 #include <ctime>
 #include <vector>
 #include <iomanip>
+#include <string>
 #include "Activity.h"
 #include "Rank.h"
 
@@ -25,8 +26,6 @@ private:
 	long UUID;
 
 	std::string name;
-
-	long clubID;
 
 	TJ::simpleDate dob; // Date of birth
 
@@ -46,9 +45,6 @@ public:
 	void setName(std::string name);
 	std::string getName();
 
-	void setClubID(long clugID);
-	long getClubID();
-
 	void setDob(TJ::simpleDate dob);
 	TJ::simpleDate getDob();
 
@@ -66,4 +62,5 @@ public:
 namespace TJ {
 	User createUser();
 	void listUsers(std::vector<User> users);
+	void deleteUser(std::vector<User>& users);
 }
