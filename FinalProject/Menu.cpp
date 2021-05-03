@@ -1,4 +1,4 @@
-#include "AbstractMenu.h"
+#include "Menu.h"
 
 void Menu::setTitle(std::string title) {
 	this->title = title;
