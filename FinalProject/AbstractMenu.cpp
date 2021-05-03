@@ -6,6 +6,14 @@ Menu::Menu() {
 Menu::~Menu() {
 }
 
+void Menu::setTitle(std::string title) {
+	this->title = title;
+}
+
+std::string Menu::getTitle() {
+	return this->title;
+}
+
 void Menu::addChoice(std::string name, std::string description, void(*func)()) {
 	FunctionItem* item = new FunctionItem();
 	item->setDescription(description);
@@ -17,18 +25,33 @@ void Menu::addChoice(std::string name, std::string description, void(*func)()) {
 }
 
 void Menu::display() {
+	TJ::clearScreen();
+	TJ::breakSection('=');
+	std::cout << this->getTitle() << std::endl;
+	TJ::breakSection();
 	for (auto& option : this->options) {
-		std::cout << "[" << option.first << "] " << option.second->getDescription();
-	}	
+		std::cout << "[" << option.first << "] " << option.second->getDescription() << std::endl;
+	}
+
+	TJ::breakSection('=');
 
 	std::string choice;
 
-	std::cin >> choice;
-	while (std::cin.fail()) {
-		std::cin.clear(); // Reset the Cin flags
-		std::cin.ignore(100, '\n'); // Clear the buffer
-		std::cout << "Invalid input." << std::endl;
+	bool valid = false;
+	while (!valid) {
 		std::cin >> choice;
+		
+		while (std::cin.fail()) {
+			std::cin.clear(); // Reset the Cin flags
+			std::cin.ignore(100, '\n'); // Clear the buffer
+			std::cout << "Invalid input." << std::endl;
+			std::cin >> choice;
+		}
+
+		if (this->options.find(choice) != this->options.end())
+			valid = true;
+		else
+			std::cout << "Please choose one of the given options." << std::endl;
 	}
 
 	this->options[choice]->run();

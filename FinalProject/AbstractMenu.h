@@ -5,15 +5,16 @@
 * \        /
 *  \      /
 *   \    /
-*    \  /		Add a delete for the item vertor, items are created with the "new" method
+*    \  /		Add a delete for the item vertor and menu pointer, items are created with the "new" method
 *     \/
 *	+----+
 *   |    |
 *   +----+
 */
 
-
 #include <iostream>
+#include "TJ.h"
+
 #include <map>
 #include <vector>
 
@@ -24,7 +25,7 @@ public:
 		std::string name;
 		std::string description;
 	public:
-		enum class ItemType { fuction = 0, object = 1 };
+		enum class ItemType { fuction = 0, menu = 1 };
 
 		AbstractItem();
 		~AbstractItem();
@@ -52,6 +53,19 @@ public:
 		void setContent(void (*func)()) { storedFunction = func; }
 	};
 
+	class MenuItem : public AbstractItem {
+	private:
+		Menu* menu;
+	public:
+		//FunctionItem() : AbstractItem() {}
+
+		ItemType content() override { return ItemType::menu; }
+
+		void run() override { this->menu->display(); }
+
+		void setContent(Menu *menu) { this->menu = menu; }
+	};
+
 private:
 	std::string title;
 	//std::vector<std::unique_ptr<Menu::AbstractItem>> options;
@@ -62,6 +76,8 @@ public:
 	Menu();
 	~Menu();
 
+	void setTitle(std::string title);
+	std::string getTitle();
 	void addChoice(std::string name, std::string description, void (*func)());
 	void display();
 };
