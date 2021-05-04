@@ -58,9 +58,3 @@ public:
 	void addActivity(Activity activity);
 	std::vector<Activity> getActivities();
 };
-
-namespace TJ {
-	User createUser();
-	void listUsers(std::vector<User> users);
-	void deleteUser(std::vector<User>& users);
-}

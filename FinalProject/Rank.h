@@ -13,7 +13,7 @@
 #include <vector>
 
 enum class RankEnum {
-	candidateB, candidateA,
+	noRank=0, candidateB=1, candidateA,
 	kyu9,
 	candidateKyu8, kyu8, advancedKyu8,
 	candidateKyu7, kyu7, advancedKyu7,

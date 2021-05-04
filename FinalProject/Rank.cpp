@@ -25,6 +25,7 @@ void Rank::giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner) {
 
 std::string Rank::toString(RankEnum rank) {
 	switch (rank) {
+		case RankEnum::noRank: return "no rank"; break;
 		case RankEnum::candidateB: return "candidate B"; break;
 		case RankEnum::candidateA: return "candidate A"; break;
 		case RankEnum::kyu9: return "9th kyu"; break;
