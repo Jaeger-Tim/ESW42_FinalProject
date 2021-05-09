@@ -3,8 +3,8 @@
 long User::count = 0;
 
 User::User() {
-	User::count++;
-	UUID = User::count;
+	User::count++;		// Everytime the constructor is called, this increases, therefore counting the
+	UUID = User::count;	// instances created and ensuring that the UUID stays unique
 	this->name = "Unnamed";
 	this->dob = { 1,1,1 };
 }

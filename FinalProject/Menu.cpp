@@ -8,7 +8,6 @@ std::string Menu::getTitle() {
 	return this->title;
 }
 
-//void Menu::addChoice(std::string name, std::string description, void(*func)()) {
 void Menu::addChoice(std::string name, std::string description, std::function<void(void)> func) {
 	FunctionItem* item = new FunctionItem();
 	item->setDescription(description);
@@ -22,10 +21,20 @@ void Menu::addChoice(std::string name, std::string description, Menu* menu) {
 	item->setDescription(description);
 	item->setContent(menu);
 	this->options.emplace(name, item);
-
 }
 
 void Menu::display() {
+	/**
+	* Display the actual menu in the format:
+	* 
+	* ==================================================
+	* Title
+	* --------------------------------------------------
+	* [1] Description for 1
+	* [A] Description for A
+	* [OTHER] Description for OTHER
+	* ==================================================
+	**/
 	TJ::clearScreen();
 	TJ::breakSection('=');
 
@@ -33,12 +42,14 @@ void Menu::display() {
 
 	TJ::breakSection();
 
+	// Loop through all options and display them
 	for (auto& option : this->options) {
 		std::cout << "[" << option.first << "] " << option.second->getDescription() << std::endl;
 	}
 
 	TJ::breakSection('=');
 
+	// Get the users choise
 	std::string choice;
 
 	bool valid = false;
@@ -58,6 +69,8 @@ void Menu::display() {
 			std::cout << "Please choose one of the given options." << std::endl;
 	}
 
+
+	// Preform the option that the user chose
 	this->options[choice]->run();
 }
 
