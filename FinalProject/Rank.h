@@ -13,7 +13,7 @@
 #include <vector>
 
 enum class RankEnum {
-	noRank=0, candidateB=1, candidateA,
+	noRank = 0, candidateB = 1, candidateA,
 	kyu9,
 	candidateKyu8, kyu8, advancedKyu8,
 	candidateKyu7, kyu7, advancedKyu7,
@@ -40,13 +40,20 @@ private:
 public:
 	Rank();
 	~Rank();
-	
+
 	void giveRank(RankEntry rankEntry);
 	void giveRank(RankEnum rank, std::string examiner);
 	void giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner);
-	
+
 	static std::string toString(RankEnum rank);
 
 	void setRankLog(std::vector<RankEntry> rankLog);
 	std::vector<RankEntry> getRankLog();
+
+	/* Operator overloading */
+	Rank operator+(const Rank& rank);
+
+	friend std::ostream& operator<<(std::ostream& os, const Rank& rank);
 };
+
+std::ostream& operator<<(std::ostream& os, const Rank& rank);

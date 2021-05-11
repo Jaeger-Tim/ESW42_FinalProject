@@ -70,3 +70,20 @@ void Rank::setRankLog(std::vector<RankEntry> rankLog) {
 std::vector<RankEntry> Rank::getRankLog() {
 	return this->rankLog;
 }
+
+Rank Rank::operator+(const Rank& rank) {
+	Rank tempRank;
+	std::vector<RankEntry> tempRankLog; // I can't directly access the equation due to the use of getters and setters, so I descide to use a temporary equation variable
+	
+	tempRankLog.insert(tempRankLog.end(), rank.rankLog.begin(), rank.rankLog.end());
+	tempRankLog.insert(tempRankLog.end(), this->rankLog.begin(), this->rankLog.end());
+	
+	tempRank.setRankLog(tempRankLog);
+
+	return tempRank;
+}
+
+std::ostream& operator<<(std::ostream& os, const Rank& rank) {
+	os << Rank::toString(rank.rankLog.at(rank.rankLog.size()-1).rank);
+	return os;
+}
