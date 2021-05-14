@@ -1,10 +1,27 @@
 #pragma once
 
 /**
+* Author: Tim Jäger
+* Email: tim.jager2001@gmail.com
+*
+* Content:
+*	- RankEnum (enum)
+*	- RankEntry (struct)
+*	- Rank (class)
+*
 * Dependencies:
 *	- iostream
-*	- TJ
 *	- vector
+*
+*	- TJ
+*
+* RankEnum: this is a list of all available karate ranks in the right order.
+*
+* RankEntry: this is a struct that stores what rank has been obtained when and under whos supervision.
+* 
+* Rank: this is a class that keeps track of all ranks anyone has ever obtained and provides basic
+* interaction with the list. It also has a function to convert RankEnum to a human readable format
+* and has a stream operator.
 */
 
 #include <iostream>
@@ -12,6 +29,8 @@
 
 #include <vector>
 
+
+/* Enumerators */
 enum class RankEnum {
 	noRank = 0, candidateB = 1, candidateA,
 	kyu9,
@@ -28,12 +47,15 @@ enum class RankEnum {
 	kyudan, judan
 };
 
+/* Structures */
 struct RankEntry {
 	RankEnum rank;
 	TJ::simpleDate date;
 	std::string examiner;
 };
 
+
+/* Classes */
 class Rank {
 private:
 	std::vector<RankEntry> rankLog;

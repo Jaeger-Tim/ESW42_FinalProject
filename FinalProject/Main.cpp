@@ -24,8 +24,8 @@ int main() {
 	/* Menu setup */
 	mainMenu.setTitle("Main menu");
 	mainMenu.addChoice("1", "Manage users", &manageUsersMenu);
-	mainMenu.addChoice("2", "Attendance", [&]() { getAttendance(attendance, users); mainMenu.display(); });
-	mainMenu.addChoice("EXIT", "", []() {});
+	mainMenu.addChoice("2", "Attendance", [&]() { getAttendance(attendance, users); mainMenu.display(); }); // after the attendance function is run, start a new mainMenu
+	mainMenu.addChoice("EXIT", "", []() {}); // If nothing happens, no new menu is shown and you just exit the menu
 
 	manageUsersMenu.setTitle("Manage users");
 	manageUsersMenu.addChoice("1", "List all users", [&]() { TJ::listUsers(users); manageUsersMenu.display(); });

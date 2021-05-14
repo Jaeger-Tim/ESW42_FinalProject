@@ -1,5 +1,7 @@
 #include "Rank.h"
 
+/* Constructors and destructors */
+
 Rank::Rank() {
 	this->rankLog = {};
 }
@@ -7,6 +9,7 @@ Rank::Rank() {
 Rank::~Rank() {
 }
 
+/* Other functions */
 void Rank::giveRank(RankEntry rankEntry) {
 	this->rankLog.push_back(rankEntry);
 }
@@ -24,7 +27,7 @@ void Rank::giveRank(RankEnum rank, TJ::simpleDate date, std::string examiner) {
 }
 
 std::string Rank::toString(RankEnum rank) {
-	switch (rank) {
+	switch (rank) { // This list has to be hardcoded
 		case RankEnum::noRank: return "no rank"; break;
 		case RankEnum::candidateB: return "candidate B"; break;
 		case RankEnum::candidateA: return "candidate A"; break;
@@ -63,6 +66,8 @@ std::string Rank::toString(RankEnum rank) {
 	}
 }
 
+/* Getters and setters */
+
 void Rank::setRankLog(std::vector<RankEntry> rankLog) {
 	this->rankLog = rankLog;
 }
@@ -71,9 +76,11 @@ std::vector<RankEntry> Rank::getRankLog() {
 	return this->rankLog;
 }
 
+/* Operator overloading */
+
 Rank Rank::operator+(const Rank& rank) {
 	Rank tempRank;
-	std::vector<RankEntry> tempRankLog; // I can't directly access the equation due to the use of getters and setters, so I descide to use a temporary equation variable
+	std::vector<RankEntry> tempRankLog;
 	
 	tempRankLog.insert(tempRankLog.end(), rank.rankLog.begin(), rank.rankLog.end());
 	tempRankLog.insert(tempRankLog.end(), this->rankLog.begin(), this->rankLog.end());
@@ -85,5 +92,6 @@ Rank Rank::operator+(const Rank& rank) {
 
 std::ostream& operator<<(std::ostream& os, const Rank& rank) {
 	os << Rank::toString(rank.rankLog.at(rank.rankLog.size()-1).rank);
+
 	return os;
 }

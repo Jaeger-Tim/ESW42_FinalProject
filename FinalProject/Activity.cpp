@@ -1,5 +1,7 @@
 #include "Activity.h"
 
+/* Constructors and destructors*/
+
 Activity::Activity() {
 	this->description = "Unknown";
 	this->location = "Unknown";
@@ -16,6 +18,8 @@ Activity::Activity(std::string description, std::string location, TJ::simpleDate
 
 Activity::~Activity() {
 }
+
+/* Getters and setters */
 
 void Activity::setDescription(std::string description) {
 	this->description = description;

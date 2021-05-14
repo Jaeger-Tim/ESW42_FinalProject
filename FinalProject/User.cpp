@@ -1,6 +1,8 @@
 #include "User.h"
 
-long User::count = 0;
+long User::count = 0; // On launch, initialize the usercount
+
+/* Constructors and destructor */
 
 User::User() {
 	User::count++;		// Everytime the constructor is called, this increases, therefore counting the
@@ -29,6 +31,8 @@ User::User(std::string name, long clubID, TJ::simpleDate dob, Rank rank, std::ve
 
 User::~User() {
 }
+
+/* Getters and setters and additive functions */
 
 void User::setUUID(long UUID) {
 	this->UUID = UUID;

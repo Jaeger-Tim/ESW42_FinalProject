@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Activity">
+    <Position X="6.75" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAIAIQAACAAgAAIAIAAAAAACAKAAAAAACAAAAUAAAAA=</HashCode>
+      <FileName>Activity.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="date" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Menu">
+    <Position X="16" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Menu::AbstractItem">
+        <NestedTypes>
+          <Enum Name="Menu::AbstractItem::ItemType" Collapsed="true">
+            <TypeIdentifier>
+              <NewMemberFileName>Menu.h</NewMemberFileName>
+            </TypeIdentifier>
+          </Enum>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>Menu.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Menu::FunctionItem">
+        <TypeIdentifier>
+          <NewMemberFileName>Menu.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Menu::MenuItem">
+        <TypeIdentifier>
+          <NewMemberFileName>Menu.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAQAAABEAAAAAAAAAAAAEAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Menu.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rank">
+    <Position X="10" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAAAAAAAAAAACAAABAIABCAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Rank.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="User">
+    <Position X="6.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAABAAgAAQABEAABlAAIAAAABAAEgABIkAAFAAAAAAA=</HashCode>
+      <FileName>User.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="rank" />
+      <Field Name="dob" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="AttendanceStruct">
+    <Position X="10.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Attendance.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="RankEntry">
+    <Position X="10.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Rank.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="date" />
+      <Field Name="rank" />
+    </ShowAsAssociation>
+  </Struct>
+  <Struct Name="TJ::simpleDate">
+    <Position X="7" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAkAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TJ.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="RankEnum">
+    <Position X="13.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAIAAACgfxAIAgAAQBBAEACEwAAgAf4=</HashCode>
+      <FileName>Rank.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

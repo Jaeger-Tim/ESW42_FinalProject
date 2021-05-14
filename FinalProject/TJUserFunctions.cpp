@@ -4,12 +4,14 @@ User TJ::createUser() {
 	User user;
 	std::string tmpStr;
 
+	/* Get and set the users name */
 	TJ::breakSection('=');
 	std::cout << "Name: ";
 	TJ::ignore();
 	std::getline(std::cin, tmpStr);
 	user.setName(tmpStr);
 
+	/* Get and set the date of birth of the user */
 	int tmpDay;
 	std::cout << "Date of birth:\nDD: ";
 	std::cin >> tmpDay;
@@ -45,6 +47,7 @@ User TJ::createUser() {
 
 	user.setDob({ tmpDay, tmpMonth, tmpYear });
 
+	// The user can be returned as is from this point
 	return user;
 }
 
@@ -61,12 +64,15 @@ void TJ::listUsers(std::vector<User> users) {
 
 	TJ::breakSection('=');
 
+	/* Wait till the user is done reading */
 	std::cout << "Press enter to continue...";
 	std::cin.ignore(100, '\n');
 	std::getchar();
 }
 
 void TJ::deleteUser(std::vector<User>& users) {
+
+	/* Get the users UUID */
 	TJ::clearScreen();
 	TJ::breakSection('=');
 	std::cout << "User UUID: ";
@@ -81,6 +87,7 @@ void TJ::deleteUser(std::vector<User>& users) {
 		std::cin >> UUID;
 	}
 
+	/* List all users that match the UUID, this should at any time only be one but goes through all users to make sure */
 	TJ::breakSection();
 
 	std::cout << "Are you sure you want to delete this user:" << std::endl;
@@ -95,6 +102,7 @@ void TJ::deleteUser(std::vector<User>& users) {
 		}
 	}
 
+	/* Get confirmation */
 	TJ::breakSection();
 	std::cout << "Type \"YES\" if you are sure: ";
 
@@ -102,6 +110,7 @@ void TJ::deleteUser(std::vector<User>& users) {
 	TJ::ignore();
 	std::getline(std::cin, tmpStr);
 
+	/* If the answer is YES, remove the user */
 	std::string yesStr = "YES";
 	if (tmpStr == yesStr) {
 		for (int i = 0; i < users.size(); i++) {
@@ -112,6 +121,7 @@ void TJ::deleteUser(std::vector<User>& users) {
 		}
 	}
 
+	/* Wait for user input to make sure they can read the deletion confirmation */
 	TJ::breakSection('=');
 
 	std::cout << "Press enter to continue..." << std::endl;

@@ -1,18 +1,10 @@
 #pragma once
 
-#include <iostream>
-#include "TJ.h"
-
-#include <map>
-#include <vector>
-
-#include <functional>
-
 /**
 * This class is an interactive menu.
 * It stores options (ie. functions or other menus) and can display and run them.
 * The menu will look as follow:
-* 
+*
 * ==================================================
 * Title
 * --------------------------------------------------
@@ -21,8 +13,17 @@
 * [OTHER] Description for OTHER
 * ==================================================
 * // You can then type here your answer
-* 
+*
 **/
+
+#include <iostream>
+#include "TJ.h"
+
+#include <map>
+#include <vector>
+
+#include <functional>
+
 class Menu {
 public:
 	// These classes are defined in Menu to avoid to need to maintain backwards compatibility whenever the Menu class is updated
